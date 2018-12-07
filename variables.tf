@@ -11,8 +11,3 @@ variable "ttl" {
   description = "The TTL to use for the DNS records."
   default     = 3600
 }
-
-variable "provider" {
-  description = "The resource provider to use. Defaults to `cloudflare`."
-  default     = "cloudflare"
-}

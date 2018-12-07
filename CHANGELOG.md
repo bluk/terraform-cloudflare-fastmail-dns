@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.2.2
+
+* Update documentation and remove unused `provider` variable.
+
 ## v0.2.1
 
 * Fix using a non-default provider.
