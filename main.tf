@@ -1,79 +1,88 @@
 resource "cloudflare_record" "mx_wildcard1" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "*"
   type     = "MX"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   value    = "in1-smtp.messagingengine.com"
   priority = 10
 }
 
 resource "cloudflare_record" "mx_wildcard2" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "*"
   type     = "MX"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   value    = "in2-smtp.messagingengine.com"
   priority = 20
 }
 
 resource "cloudflare_record" "mx_domain1" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "${var.domain_name}"
   type     = "MX"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   value    = "in1-smtp.messagingengine.com"
   priority = 10
 }
 
 resource "cloudflare_record" "mx_domain2" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "${var.domain_name}"
   type     = "MX"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   value    = "in2-smtp.messagingengine.com"
   priority = 20
 }
 
 resource "cloudflare_record" "mx_www1" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "www"
   type     = "MX"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   value    = "in1-smtp.messagingengine.com"
   priority = 10
 }
 
 resource "cloudflare_record" "mx_www2" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "www"
   type     = "MX"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   value    = "in2-smtp.messagingengine.com"
   priority = 20
 }
 
 resource "cloudflare_record" "root_domain_txt" {
-  count  = "${var.create_root_domain_txt ? 1 : 0}"
-  domain = "${var.domain_name}"
-  name   = "${var.domain_name}"
-  type   = "TXT"
-  ttl    = 3600
-  value  = "\"v=spf1 include:spf.messagingengine.com ?all\""
+  provider = "${var.provider}"
+  count    = "${var.create_root_domain_txt ? 1 : 0}"
+  domain   = "${var.domain_name}"
+  name     = "${var.domain_name}"
+  type     = "TXT"
+  ttl      = "${var.ttl}"
+  value    = "\"v=spf1 include:spf.messagingengine.com ?all\""
 }
 
 resource "cloudflare_record" "adsp_domainkey_txt" {
-  domain = "${var.domain_name}"
-  name   = "_adsp._domainkey.${var.domain_name}"
-  type   = "TXT"
-  ttl    = 3600
-  value  = "dkim=unknown"
+  provider = "${var.provider}"
+  domain   = "${var.domain_name}"
+  name     = "_adsp._domainkey.${var.domain_name}"
+  type     = "TXT"
+  ttl      = "${var.ttl}"
+  value    = "dkim=unknown"
 }
 
 resource "cloudflare_record" "client_smtp_srv" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "_client._smtp.${var.domain_name}"
   type     = "SRV"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   priority = "1"
 
   data = {
@@ -88,10 +97,11 @@ resource "cloudflare_record" "client_smtp_srv" {
 }
 
 resource "cloudflare_record" "caldav_tcp_srv" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "_caldav._tcp.${var.domain_name}"
   type     = "SRV"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   priority = "0"
 
   data = {
@@ -106,10 +116,11 @@ resource "cloudflare_record" "caldav_tcp_srv" {
 }
 
 resource "cloudflare_record" "caldavs_tcp_srv" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "_caldavs._tcp.${var.domain_name}"
   type     = "SRV"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   priority = "0"
 
   data = {
@@ -124,10 +135,11 @@ resource "cloudflare_record" "caldavs_tcp_srv" {
 }
 
 resource "cloudflare_record" "carddav_tcp_srv" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "_carddav._tcp.${var.domain_name}"
   type     = "SRV"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   priority = "0"
 
   data = {
@@ -142,10 +154,11 @@ resource "cloudflare_record" "carddav_tcp_srv" {
 }
 
 resource "cloudflare_record" "carddavs_tcp_srv" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "_carddavs._tcp.${var.domain_name}"
   type     = "SRV"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   priority = "0"
 
   data = {
@@ -160,10 +173,11 @@ resource "cloudflare_record" "carddavs_tcp_srv" {
 }
 
 resource "cloudflare_record" "imap_tcp_srv" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "_imap._tcp.${var.domain_name}"
   type     = "SRV"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   priority = "0"
 
   data = {
@@ -178,10 +192,11 @@ resource "cloudflare_record" "imap_tcp_srv" {
 }
 
 resource "cloudflare_record" "imaps_tcp_srv" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "_imaps._tcp.${var.domain_name}"
   type     = "SRV"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   priority = "0"
 
   data = {
@@ -196,10 +211,11 @@ resource "cloudflare_record" "imaps_tcp_srv" {
 }
 
 resource "cloudflare_record" "pop3_tcp_srv" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "_pop3._tcp.${var.domain_name}"
   type     = "SRV"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   priority = "0"
 
   data = {
@@ -214,10 +230,11 @@ resource "cloudflare_record" "pop3_tcp_srv" {
 }
 
 resource "cloudflare_record" "pop3s_tcp_srv" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "_pop3s._tcp.${var.domain_name}"
   type     = "SRV"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   priority = "10"
 
   data = {
@@ -232,10 +249,11 @@ resource "cloudflare_record" "pop3s_tcp_srv" {
 }
 
 resource "cloudflare_record" "submission_tcp_srv" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "_submission._tcp.${var.domain_name}"
   type     = "SRV"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   priority = "0"
 
   data = {
@@ -250,59 +268,66 @@ resource "cloudflare_record" "submission_tcp_srv" {
 }
 
 resource "cloudflare_record" "mail_a1" {
-  domain = "${var.domain_name}"
-  name   = "mail.${var.domain_name}"
-  type   = "A"
-  ttl    = 3600
-  value  = "66.111.4.147"
+  provider = "${var.provider}"
+  domain   = "${var.domain_name}"
+  name     = "mail.${var.domain_name}"
+  type     = "A"
+  ttl      = "${var.ttl}"
+  value    = "66.111.4.147"
 }
 
 resource "cloudflare_record" "mail_a2" {
-  domain = "${var.domain_name}"
-  name   = "mail.${var.domain_name}"
-  type   = "A"
-  ttl    = 3600
-  value  = "66.111.4.148"
+  provider = "${var.provider}"
+  domain   = "${var.domain_name}"
+  name     = "mail.${var.domain_name}"
+  type     = "A"
+  ttl      = "${var.ttl}"
+  value    = "66.111.4.148"
 }
 
 resource "cloudflare_record" "mx_mail1" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "mail"
   type     = "MX"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   value    = "in1-smtp.messagingengine.com"
   priority = 10
 }
 
 resource "cloudflare_record" "mx_mail2" {
+  provider = "${var.provider}"
   domain   = "${var.domain_name}"
   name     = "mail"
   type     = "MX"
-  ttl      = 3600
+  ttl      = "${var.ttl}"
   value    = "in2-smtp.messagingengine.com"
   priority = 20
 }
 
 resource "cloudflare_record" "fm1_domainkey_cname" {
-  domain = "${var.domain_name}"
-  name   = "fm1._domainkey.${var.domain_name}"
-  type   = "CNAME"
-  ttl    = 3600
-  value  = "fm1.${var.domain_name}.dkim.fmhosted.com"
+  provider = "${var.provider}"
+  domain   = "${var.domain_name}"
+  name     = "fm1._domainkey.${var.domain_name}"
+  type     = "CNAME"
+  ttl      = "${var.ttl}"
+  value    = "fm1.${var.domain_name}.dkim.fmhosted.com"
 }
 
 resource "cloudflare_record" "fm2_domainkey_cname" {
-  domain = "${var.domain_name}"
-  name   = "fm2._domainkey.${var.domain_name}"
-  type   = "CNAME"
-  ttl    = 3600
-  value  = "fm2.${var.domain_name}.dkim.fmhosted.com"
+  provider = "${var.provider}"
+  domain   = "${var.domain_name}"
+  name     = "fm2._domainkey.${var.domain_name}"
+  type     = "CNAME"
+  ttl      = "${var.ttl}"
+  value    = "fm2.${var.domain_name}.dkim.fmhosted.com"
 }
 
 resource "cloudflare_record" "fm3_domainkey_cname" {
-  domain = "${var.domain_name}"
-  name   = "fm3._domainkey.${var.domain_name}"
-  type   = "CNAME"
-  ttl    = 3600
-  value  = "fm3.${var.domain_name}.dkim.fmhosted.com"
+  provider = "${var.provider}"
+  domain   = "${var.domain_name}"
+  name     = "fm3._domainkey.${var.domain_name}"
+  type     = "CNAME"
+  ttl      = "${var.ttl}"
+  value    = "fm3.${var.domain_name}.dkim.fmhosted.com"
 }
