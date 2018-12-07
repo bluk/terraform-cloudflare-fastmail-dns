@@ -14,8 +14,10 @@ after reviewing the code.
 In your Terraform file:
 
 ```
-module "example_fastmail" {
-  source = "github.com/bluk/terraform-cloudflare-fastmail-dns"
+module "example_fastmail-dns" {
+  source  = "bluk/fastmail-dns/cloudflare"
+  version = "0.2.1"
+
   domain_name = "example.com"
 }
 ```
