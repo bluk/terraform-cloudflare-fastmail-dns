@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.3.0
+
+* Update for Cloudflare provider v2.x and Terraform v0.12.x.
+
 ## v0.2.2
 
 * Update documentation and remove unused `provider` variable.
