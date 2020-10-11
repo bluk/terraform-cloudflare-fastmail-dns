@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.4.0
+
+* `terraform 0.13upgrade` to add `versions.tf` file.
+
 ## v0.3.0
 
 * Update for Cloudflare provider v2.x and Terraform v0.12.x.
