@@ -65,31 +65,6 @@ resource "cloudflare_record" "root_domain_txt" {
   value   = "\"v=spf1 include:spf.messagingengine.com ?all\""
 }
 
-resource "cloudflare_record" "adsp_domainkey_txt" {
-  zone_id = var.zone_id
-  name    = "_adsp._domainkey.${var.domain_name}"
-  type    = "TXT"
-  ttl     = var.ttl
-  value   = "dkim=unknown"
-}
-
-resource "cloudflare_record" "client_smtp_srv" {
-  zone_id  = var.zone_id
-  name     = "_client._smtp.${var.domain_name}"
-  type     = "SRV"
-  ttl      = var.ttl
-  priority = "1"
-
-  data = {
-    priority = "1"
-    weight   = "1"
-    port     = "443"
-    service  = "_client"
-    proto    = "_smtp"
-    name     = var.domain_name
-    target   = "fastmail.com"
-  }
-}
 
 resource "cloudflare_record" "caldav_tcp_srv" {
   zone_id  = var.zone_id
@@ -105,7 +80,7 @@ resource "cloudflare_record" "caldav_tcp_srv" {
     service  = "_caldav"
     proto    = "_tcp"
     name     = var.domain_name
-    target   = "false"
+    target   = "."
   }
 }
 
@@ -141,7 +116,7 @@ resource "cloudflare_record" "carddav_tcp_srv" {
     service  = "_cardddav"
     proto    = "_tcp"
     name     = var.domain_name
-    target   = "false"
+    target   = "."
   }
 }
 
@@ -177,7 +152,7 @@ resource "cloudflare_record" "imap_tcp_srv" {
     service  = "_imap"
     proto    = "_tcp"
     name     = var.domain_name
-    target   = "false"
+    target   = "."
   }
 }
 
@@ -213,7 +188,7 @@ resource "cloudflare_record" "pop3_tcp_srv" {
     service  = "_pop3"
     proto    = "_tcp"
     name     = var.domain_name
-    target   = "false"
+    target   = "."
   }
 }
 
@@ -309,4 +284,12 @@ resource "cloudflare_record" "fm3_domainkey_cname" {
   type    = "CNAME"
   ttl     = var.ttl
   value   = "fm3.${var.domain_name}.dkim.fmhosted.com"
+}
+
+resource "cloudflare_record" "dmarc" {
+  zone_id = var.zone_id
+  name    = "_dmarc"
+  type    = "TXT"
+  ttl     = var.ttl
+  value   = "v=DMARC1; p=none; rua=mailto:dmarc@${var.domain_name}"
 }
