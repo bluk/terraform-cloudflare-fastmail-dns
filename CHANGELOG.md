@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.5.0
+
+* Update `required_provider` block for Terraform 0.14.
+* Remove `adsp_domainkey_txt` and `client_smtp_srv` records
+  which are not documented on Fastmail docs anymore. Thanks
+  to @Ashtonian.
+* Fix target for non-SSL service domains from `false` to `.`
+  Thanks to @Ashtonian.
+* Add DMARC record policy. Thanks to @Ashtonian.
+
 ## v0.4.0
 
 * `terraform 0.13upgrade` to add `versions.tf` file.
