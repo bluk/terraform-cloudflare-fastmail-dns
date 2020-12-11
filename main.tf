@@ -64,14 +64,6 @@ resource "cloudflare_record" "root_domain_txt" {
   value   = "\"v=spf1 include:spf.messagingengine.com ?all\""
 }
 
-resource "cloudflare_record" "adsp_domainkey_txt" {
-  zone_id = var.zone_id
-  name    = "_adsp._domainkey.${var.domain_name}"
-  type    = "TXT"
-  ttl     = var.ttl
-  value   = "dkim=unknown"
-}
-
 resource "cloudflare_record" "client_smtp_srv" {
   zone_id  = var.zone_id
   name     = "_client._smtp.${var.domain_name}"
