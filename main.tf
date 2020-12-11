@@ -105,7 +105,7 @@ resource "cloudflare_record" "caldav_tcp_srv" {
     service  = "_caldav"
     proto    = "_tcp"
     name     = var.domain_name
-    target   = "false"
+    target   = "."
   }
 }
 
@@ -141,7 +141,7 @@ resource "cloudflare_record" "carddav_tcp_srv" {
     service  = "_cardddav"
     proto    = "_tcp"
     name     = var.domain_name
-    target   = "false"
+    target   = "."
   }
 }
 
@@ -177,7 +177,7 @@ resource "cloudflare_record" "imap_tcp_srv" {
     service  = "_imap"
     proto    = "_tcp"
     name     = var.domain_name
-    target   = "false"
+    target   = "."
   }
 }
 
@@ -213,7 +213,7 @@ resource "cloudflare_record" "pop3_tcp_srv" {
     service  = "_pop3"
     proto    = "_tcp"
     name     = var.domain_name
-    target   = "false"
+    target   = "."
   }
 }
 
