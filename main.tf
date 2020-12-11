@@ -1,5 +1,4 @@
 provider "cloudflare" {
-  version = "~> 2.0"
 }
 
 resource "cloudflare_record" "mx_wildcard1" {
