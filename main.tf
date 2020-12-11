@@ -283,3 +283,11 @@ resource "cloudflare_record" "fm3_domainkey_cname" {
   ttl     = var.ttl
   value   = "fm3.${var.domain_name}.dkim.fmhosted.com"
 }
+
+resource "cloudflare_record" "dmarc" {
+  zone_id = var.zone_id
+  name    = "_dmarc"
+  type    = "TXT"
+  ttl     = var.ttl
+  value   = "v=DMARC1; p=none; rua=mailto:dmarc@${var.domain_name}"
+}
