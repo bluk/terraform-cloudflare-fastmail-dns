@@ -1,6 +1,3 @@
-provider "cloudflare" {
-}
-
 resource "cloudflare_record" "mx_wildcard1" {
   zone_id  = var.zone_id
   name     = "*"

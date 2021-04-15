@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.6.0
+
+* Updated for Terraform `0.15`. Removed `cloudflare` provider declaration.
+
 ## v0.5.0
 
 * Update `required_provider` block for Terraform 0.14.
