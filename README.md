@@ -16,7 +16,7 @@ In your Terraform file:
 ```
 module "example_fastmail-dns" {
   source  = "bluk/fastmail-dns/cloudflare"
-  version = "0.6.0"
+  version = "0.7.0"
 
   zone_id = "1abcd"
   domain_name = "example.com"

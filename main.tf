@@ -68,7 +68,7 @@ resource "cloudflare_record" "caldav_tcp_srv" {
   ttl      = var.ttl
   priority = "0"
 
-  data = {
+  data {
     priority = "0"
     weight   = "0"
     port     = "0"
@@ -86,7 +86,7 @@ resource "cloudflare_record" "caldavs_tcp_srv" {
   ttl      = var.ttl
   priority = "0"
 
-  data = {
+  data {
     priority = "0"
     weight   = "1"
     port     = "443"
@@ -104,7 +104,7 @@ resource "cloudflare_record" "carddav_tcp_srv" {
   ttl      = var.ttl
   priority = "0"
 
-  data = {
+  data {
     priority = "0"
     weight   = "0"
     port     = "0"
@@ -122,7 +122,7 @@ resource "cloudflare_record" "carddavs_tcp_srv" {
   ttl      = var.ttl
   priority = "0"
 
-  data = {
+  data {
     priority = "0"
     weight   = "1"
     port     = "443"
@@ -140,7 +140,7 @@ resource "cloudflare_record" "imap_tcp_srv" {
   ttl      = var.ttl
   priority = "0"
 
-  data = {
+  data {
     priority = "0"
     weight   = "0"
     port     = "0"
@@ -158,7 +158,7 @@ resource "cloudflare_record" "imaps_tcp_srv" {
   ttl      = var.ttl
   priority = "0"
 
-  data = {
+  data {
     priority = "0"
     weight   = "1"
     port     = "993"
@@ -176,7 +176,7 @@ resource "cloudflare_record" "pop3_tcp_srv" {
   ttl      = var.ttl
   priority = "0"
 
-  data = {
+  data {
     priority = "0"
     weight   = "0"
     port     = "0"
@@ -194,7 +194,7 @@ resource "cloudflare_record" "pop3s_tcp_srv" {
   ttl      = var.ttl
   priority = "10"
 
-  data = {
+  data {
     priority = "10"
     weight   = "1"
     port     = "995"
@@ -212,7 +212,7 @@ resource "cloudflare_record" "submission_tcp_srv" {
   ttl      = var.ttl
   priority = "0"
 
-  data = {
+  data {
     priority = "0"
     weight   = "1"
     port     = "587"

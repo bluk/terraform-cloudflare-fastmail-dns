@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.7.0
+
+* Updated for Terraform `1.1`. Removed `cloudflare` provider declaration.
+* Updated for Cloudflare plugin `3.0`.
+
 ## v0.6.0
 
 * Updated for Terraform `0.15`. Removed `cloudflare` provider declaration.
